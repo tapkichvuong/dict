@@ -6,7 +6,9 @@ function Home(){
         <View>
             <Header/>
             <ScrollView>
-                <View style={styles.scrollView}></View>
+                <View style={styles.scrollView}>
+                    
+                </View>
             </ScrollView>
         </View>
     )
@@ -14,7 +16,7 @@ function Home(){
 
 const styles = StyleSheet.create({
     scrollView: {
-        height: 1500, backgroundColor: "white",
+        height: 1000, backgroundColor: "white",
     },
 })
 

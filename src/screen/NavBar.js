@@ -1,42 +1,80 @@
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import React from 'react';
+import { Icon } from '@rneui/themed'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import User from './User'
 import Home from './Home'
-import Fontawesome from '@expo/vector-icons'
-import { StyleSheet} from 'react-native'
+import {StyleSheet, Text, View} from 'react-native'
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 function NavBar(){
     return (
-        <Tab.Navigator>
+        <Tab.Navigator
+            initialRouteName="Home"
+            screenOptions={{ 
+                headerShown: false,
+                tabBarActiveTintColor: "#9EF78D",
+                tabBarInactiveTintColor: "#000",
+                tabBarActiveBackgroundColor: '#548787',
+                tabBarItemStyle: {
+                    height: 60,
+                    borderTopRightRadius: 30,//add border top right radius
+                    borderTopLeftRadius: 30,//add border top left radius
+                    paddingVertical:3
+                },
+                tabBarStyle: {
+                    height: 60,
+                    borderTopWidth: 1,
+                },
+            }}
+        >
             <Tab.Screen 
-                name="Home" 
-                option = {{
-                    tabBarLabel:() => {return null},
-                    tabBarIcon:({ color, size }) => (
-                        <Fontawesome name='home'color={color} size={size}/>
-                    )
-                }}
+                name="Home"
                 component={Home} 
+                options = {{
+                    tabBarLabel: ({ focused }) => {
+                        return <Text style={styles.label}>{focused ? "Home": ""}</Text>
+                    },
+                    tabBarIcon:({ color, size }) => (
+                        <Icon
+                            name='home'
+                            type='font-awesome'
+                            color={color}
+                            size={size}
+                        />
+                    ),
+                    
+
+                }}
             />
             <Tab.Screen 
                 name="User" 
-                option = {{
-                    tabBarLabel:() => {return null},
+                component={User}
+                options = {{
+                    tabBarLabel: ({ focused }) => {
+                        return <Text style={styles.label}>{focused ? "User": ""}</Text>
+                    },
                     tabBarIcon:({ color, size }) => (
-                        <Fontawesome name='user'color={color} size={size}/>
-                    )
+                        <Icon
+                            name='user'
+                            type='font-awesome'
+                            color={color}
+                            size={size}
+                        />
+                    ),
+                    
                 }}
-                component={User} 
             />
         </Tab.Navigator>
     );
 }
 
 const styles = StyleSheet.create({
-    view : {
-        height: 60,
+    label: {
+        fontSize: 12, 
+        fontWeight: '500', 
+        color: '#9EF78D'
     },
-});
+})
 
 export default NavBar;

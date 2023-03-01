@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import { SearchBar } from '@rneui/base';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 
 const SearchTab = () => {
   const [value, setValue] = useState("");
 
   return (
-    <View style={styles.view}>
+    <View>
       <SearchBar
         platform="default"
         containerStyle={{ borderRadius: 15 }}
         inputContainerStyle={{}}
-        inputStyle={{}}
+        inputStyle={{color: '#000'}}
         leftIconContainerStyle={{}}
         rightIconContainerStyle={{}}
         lightTheme
         loadingProps={{}}
         onChangeText={newVal => setValue(newVal)}
         onClearText={() => console.log(onClearText())}
-        placeholder="Type query here..."
+        placeholder="Search here..."
         placeholderTextColor="#888"
         cancelButtonTitle="Cancel"
         cancelButtonProps={{}}
@@ -28,13 +28,5 @@ const SearchTab = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  view: {
-    weight: 600,
-    margin: 5,
-    borderRadius: 15,
-  },
-});
 
 export default SearchTab;

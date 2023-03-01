@@ -1,5 +1,5 @@
 import Constants from 'expo-constants';
-import React from "react";
+import React, {useState} from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 import SearchTab from './SearchTab'
 
@@ -8,7 +8,7 @@ const Header = () => {
     <View style={styles.container}>
       <View style = {styles.brand}>
         <Image style={styles.logo} source={require("../../assets/book.png")} />
-        <Text> English - Viet Dictionary </Text>
+        <Text style = {{fontSize: 15} }> English - Viet Dictionary </Text>
       </View>
       <SearchTab/>
     </View>
@@ -24,10 +24,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
     justifyContent: "space-between",
-    alignItems: "center",
-    padding: Constants.statusBarHeight,
-    paddingBottom: 5,
-    backgroundColor: "cyan"
+    padding: 20,
+    paddingTop: Constants.statusBarHeight + 30,
+    backgroundColor: "#7AD6BC"
   },
   brand: {
     flexDirection: "row",

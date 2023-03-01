@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "plugins": ["@react-native-google-signin/google-signin"],
     "splash": {
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
@@ -20,6 +21,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.ct201.dict",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -27,7 +30,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "21a98398-db36-4744-a182-7e82b250faa4"
+      }
     }
-    
   }
 }
