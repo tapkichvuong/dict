@@ -7,6 +7,16 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "plugins": ["@react-native-google-signin/google-signin"],
+    "plugins": [
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "151779254397452",
+          "clientToken": "ba15dc3d5815a6a81f0c319598fd2d93",
+          "displayName": "visual Dictionary"
+        }
+      ]
+    ],
     "splash": {
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
