@@ -4,7 +4,7 @@
     "slug": "dict",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon.ico",
     "userInterfaceStyle": "light",
     "plugins": ["@react-native-google-signin/google-signin"],
     "plugins": [
@@ -39,7 +39,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.ico"
     },
     "extra": {
       "eas": {
