@@ -3,7 +3,7 @@ import { Icon } from '@rneui/themed'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import User from './User'
 import Home from './Home'
-import {StyleSheet, Text, View} from 'react-native'
+import {StyleSheet, Text} from 'react-native'
 
 const Tab = createBottomTabNavigator();
 
