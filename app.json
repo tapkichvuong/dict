@@ -4,11 +4,10 @@
     "slug": "dict",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon.ico",
     "userInterfaceStyle": "light",
+    "plugins": ["@react-native-google-signin/google-signin"],
     "plugins": [
-      "@react-native-google-signin/google-signin",
-      "@react-native-voice/voice",
       [
         "react-native-fbsdk-next",
         {
@@ -29,16 +28,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.ct201.dict",
-      "infoPlist": {
-        "NSSpeechRecognitionUsageDescription": "This app uses speech recognition to convert your speech to text.",
-        "NSCameraUsageDescription": "This app uses the camera to let user put a photo in his profile page."
-      }
+      "supportsTablet": true
     },
     "android": {
       "package": "com.ct201.dict",
-      "permissions": ["android.permission.RECORD_AUDIO"],
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -46,7 +39,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.ico"
     },
     "extra": {
       "eas": {
