@@ -1,0 +1,527 @@
+[
+    {
+        "tu": "a",
+        "phienam": "/ə(n)/",
+        "dang": "indefinite article",
+        "nghia": "một",
+        "vidu": "There is a boy in the garden."
+    },
+    {
+        "tu": "a",
+        "phienam": "/ə(n)/",
+        "dang": "indefinite article",
+        "nghia": "cái nào đó",
+        "vidu": "An owl can see in the dark."
+    },
+    {
+        "tu": "a",
+        "phienam": "/ə(n)/",
+        "dang": "indefinite article",
+        "nghia": "mỗi",
+        "vidu": "We earn $6 an hour."
+    },
+    {
+        "tu": "a",
+        "phienam": "/ei/",
+        "dang": "noun",
+        "nghia": "chữ cái A",
+        "vidu": "'Ant' begins with an A."
+    },
+    {
+        "tu": "a",
+        "phienam": "/ei/",
+        "dang": "noun",
+        "nghia": "nốt la",
+        "vidu": "The first note of the tune is an A."
+    },
+    {
+        "tu": "a bad/good loser",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "người chơi xấu",
+        "vidu": "The first note of the tune is an A."
+    },
+    {
+        "tu": "a baker's dozen",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "13",
+        "vidu": "There's a baker's dozen of his grandchildren in the photograph."
+    },
+    {
+        "tu": "a bee in one's bonnet",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "luôn bận tâm về điều gì",
+        "vidu": "he has a bee in her bonnet about going to America."
+    },
+    {
+        "tu": "a blessing in disguise",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "chuyện không may mà lại hoá may",
+        "vidu": "The poor weather turned out to be a blessing in disguise because I stayed inside and got a lot of useful work done."
+    },
+    {
+        "tu": "a bolt from the blue",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "tiếng sét ngang tai",
+        "vidu": "His resignation was a bolt from the blue"
+    },
+    {
+        "tu": "a bone of contention",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "nguyên nhân bất hoà",
+        "vidu": "Ownership of the land was a bone of contention between the two men for many years."
+    },
+    {
+        "tu": "a change of heart",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "thay đổi thái độ",
+        "vidu": "She's had a change of heart, and will be coming with us after all."
+    },
+    {
+        "tu": "a chapter of accidents",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "sự rủi ro",
+        "vidu": "The holiday has been a chapter of accidents from start to finish."
+    },
+    {
+        "tu": "a clean bill of health",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "giấy chứng nhận sức khỏe tốt",
+        "vidu": "I've been off work but I've got a clean bill of health now."
+    },
+    {
+        "tu": "a clean slate",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "làm lại cuộc đời",
+        "vidu": "After being in prison, he started his new job with a clean slate"
+    },
+    {
+        "tu": "a cold sweat",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "trạng thái toát mồ hôi vì bệnh hoặc sợ",
+        "vidu": "She broke out in a cold sweat."
+    },
+    {
+        "tu": "a cut above",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "sự hơn một bậc",
+        "vidu": "He's a cut above the average engineer."
+    },
+    {
+        "tu": "a dog's life",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "sống khổ như chó",
+        "vidu": "He leads a dog's life"
+    },
+    {
+        "tu": "a far cry",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "sự khác xa",
+        "vidu": "Our modern clothes are a far cry from the animal skins worn by our ancestors."
+    },
+    {
+        "tu": "a feather in one's cap",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "niềm tự hào",
+        "vidu": "Winning the race was quite a feather in his cap."
+    },
+    {
+        "tu": "a few",
+        "phienam": " ",
+        "dang": " ",
+        "nghia": "một vài; một ít",
+        "vidu": "e have only a few left."
+    },
+    {
+        "tu": "a fine-tooth comb",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "lược bí",
+        "vidu": " "
+    },
+    {
+        "tu": "A flat",
+        "phienam": "/ˌei 'flat/",
+        "dang": "noun",
+        "nghia": "la giáng",
+        "vidu": "The next note is an A flat."
+    },
+    {
+        "tu": "a fly in the ointment",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "con sâu bỏ rầu nồi canh",
+        "vidu": "Her constant complaints were a fly in the ointment at the dinner party."
+    },
+    {
+        "tu": "a free hand",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "toàn quyền hành động",
+        "vidu": "He gave her a free hand with the servants."
+    },
+    {
+        "tu": "a good deal / a great deal",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "nhiều",
+        "vidu": "They made a good deal of noise"
+    },
+    {
+        "tu": "a good job",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "công việc tốt",
+        "vidu": "It's a good job that she can't hear what you're saying"
+    },
+    {
+        "tu": "a hard time (of it)",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "gặp khó khăn",
+        "vidu": "The audience gave the speaker a hard time of it at the meeting"
+    },
+    {
+        "tu": "a heavy heart",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "đau buồn",
+        "vidu": "He obeyed with a heavy heart."
+    },
+    {
+        "tu": "a heavy heart",
+        "phienam": "/'ei ˌlevəl/",
+        "dang": "noun",
+        "nghia": "trình độ A",
+        "vidu": "I failed my Chemistry A level"
+    },
+    {
+        "tu": "a likely story!",
+        "phienam": " ",
+        "dang": "phase",
+        "nghia": "chuyện cứ như thật",
+        "vidu": "'He's claiming that the dog ate his homework.' 'A likely story!'"
+    },
+    {
+        "tu": "a little",
+        "phienam": " ",
+        "dang": "adj",
+        "nghia": "ngắn",
+        "vidu": "Move a little to the right!"
+    },
+    {
+        "tu": "a little",
+        "phienam": " ",
+        "dang": "adj",
+        "nghia": "một chút",
+        "vidu": "He has a little money to spare"
+    },
+    {
+        "tu": "a little",
+        "phienam": " ",
+        "dang": "adj",
+        "nghia": "hơi",
+        "vidu": "She was a little frightened."
+    },
+    {
+        "tu": "a long haul",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "một việc khó khăn, dai dẳng",
+        "vidu": "It's a long haul from here to Edinburgh."
+    },
+    {
+        "tu": "a lot",
+        "phienam": " ",
+        "dang": "adj",
+        "nghia": "nhiều",
+        "vidu": "What a lot of letters!"
+    },
+    {
+        "tu": "a man of means",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "người giàu có",
+        "vidu": " "
+    },
+    {
+        "tu": "a matter of course",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "việc tất nhiên",
+        "vidu": "You don’='t have to ask her - she'll do it as a matter of course."
+    },
+    {
+        "tu": "a matter of opinion",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "vấn đề còn tranh cãi",
+        "vidu": "Whether she's clever or not is a matter of opinion."
+    },
+    {
+        "tu": "a month of Sundays",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "một thời gian rất dài",
+        "vidu": "We're never going to finish this in a month of Sundays."
+    },
+    {
+        "tu": "a near miss",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "gần được",
+        "vidu": "It was a near miss - the ball whistled past the left post by a matter of inches."
+    },
+    {
+        "tu": "a need for",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "sự cần thiết",
+        "vidu": "There is an urgent need for teachers in this city."
+    },
+    {
+        "tu": "a pain in the neck",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "đồ của nợ",
+        "vidu": "People who are always complaining are a pain in the neck."
+    },
+    {
+        "tu": "a put-up job",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "sự bày mưu tính kế",
+        "vidu": " "
+    },
+    {
+        "tu": "a race against time",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "chạy đua với thời gian",
+        "vidu": "It was a race against time to rescue the injured climber."
+    },
+    {
+        "tu": "a raw deal",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "cách đối xử không công bằng",
+        "vidu": "I think he got a raw deal - he should have been promoted instead of Jenkins."
+    },
+    {
+        "tu": "A sharp",
+        "phienam": "/ˌei 'ʃa:p/",
+        "dang": "noun",
+        "nghia": "la thăng",
+        "vidu": "The melody ends on an A sharp."
+    },
+    {
+        "tu": "a shot in the dark",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "hú họa, cầu may",
+        "vidu": "The detective admitted that his decision to check the factory had just been a shot in the dark."
+    },
+    {
+        "tu": "a show of hands",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "biểu quyết",
+        "vidu": "The issue was decided by a show of hands."
+    },
+    {
+        "tu": "a smack on the cheek",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "cái hôn kêu",
+        "vidu": "He gave her a quick smack on the cheek."
+    },
+    {
+        "tu": "a sporting chance",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "cơ hội có thể thắng, có thể bại",
+        "vidu": "She definitely has a sporting chance of winning the race."
+    },
+    {
+        "tu": "a square deal",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "cách đối xử trung thực",
+        "vidu":  " "
+    },
+    {
+        "tu": "a stone's throw",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "một khoảng rất ngắn",
+        "vidu":  "They live only a stone's throw away from here."
+    },
+    {
+        "tu": "a storm in a teacup",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "việc bé xé ra to",
+        "vidu":  "Despite all the shouting, the argument turned out to be a storm in a teacup."
+    },
+    {
+        "tu": "a straight fight",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "sự đấu tranh trực diện",
+        "vidu":  "After months of campaigning, the presidential election has come down to a straight fight between the two men."
+    },
+    {
+        "tu": "a sweet tooth",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "thích ăn của ngọt",
+        "vidu":  "My friend has a sweet tooth."
+    },
+    {
+        "tu": "a tall order",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "đòi hỏi quá cao",
+        "vidu":  "Asking us to finish this by Friday is a bit of a tall order."
+    },
+    {
+        "tu": "a tall order",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "nhiệm vụ khó khăn",
+        "vidu":  "Finding somewhere for fifty children to stay tonight is rather a tall order."
+    },
+    {
+        "tu": "a tall story",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "câu chuyện không thật, lời nói dối",
+        "vidu":  "He told a tall story about the dog eating his homework."
+    },
+    {
+        "tu": "a tall story",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "câu chuyện khó tin",
+        "vidu":  "He is always telling tall stories."
+    },
+    {
+        "tu": "a tight corner/spot",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "tình huống khó khăn",
+        "vidu":  "His refusal to help put her in a tight corner/spot."
+    },
+    {
+        "tu": "A to Z",
+        "phienam": "/eitə'zed/",
+        "dang": "noun",
+        "nghia": "sách hướng dẫn",
+        "vidu":  " "
+    },
+    {
+        "tu": "a touch",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "một chút",
+        "vidu":  "The soup needs a touch of salt"
+    },
+    {
+        "tu": "a trick of the trade",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "bí quyết thành công trong kinh doanh",
+        "vidu":  "Remembering the customers' names is one of the tricks of the trade."
+    },
+    {
+        "tu": "a week last Friday etc",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "thứ sáu tuần trước",
+        "vidu":  "She died a week last Tuesday."
+    },
+    {
+        "tu": "a week today/tomorrow",
+        "phienam": " ",
+        "dang": "noun",
+        "nghia": "bằng giờ tuần sau",
+        "vidu":  "I'm going away a week tomorrow"
+    },
+    {
+        "tu": "a'biding",
+        "phienam": " ",
+        "dang": "adjective",
+        "nghia": "tồn tại mãi",
+        "vidu":  "She was left with an abiding feeling of sadness after saying goodbye to her son."
+    },
+    {
+        "tu": "A-bomb",
+        "phienam": "/'ei ˌbom/",
+        "dang": "noun",
+        "nghia": "bom nguyên tử",
+        "vidu":  "Truman made the decision to drop the A-bomb."
+    },
+    {
+        "tu": "A-road",
+        "phienam": "/ˈei ˌroud/",
+        "dang": "noun",
+        "nghia": "đường loại A",
+        "vidu":  "A-roads are marked in blue on the map."
+    },
+    {
+        "tu": "a.k.a.",
+        "phienam": "/'ei ˌroud/",
+        "dang": "abbreviation",
+        "nghia": "còn được biết đến với tên",
+        "vidu":  "the blues musician McKinley Morganfield a.k.a. Muddy Waters."
+    },
+    {
+        "tu": "aback",
+        "phienam": "/ə'bӕk/",
+        "dang": "adverb",
+        "nghia": "sửng sốt",
+        "vidu":  "She was taken aback by his rudeness."
+    },
+    {
+        "tu": "abacus",
+        "phienam": "/'æbəkəs/",
+        "dang": "noun",
+        "nghia": "bàn tính",
+        "vidu":  "No physical abacus is used; only the answers are written down."
+    },
+    {
+        "tu": "abandon",
+        "phienam": "/ə'bӕndən/",
+        "dang": "verb",
+        "nghia": "từ bỏ",
+        "vidu":  "The bank robbers abandoned the stolen car."
+    },
+    {
+        "tu": "abandon",
+        "phienam": "/ə'bӕndən/",
+        "dang": "verb",
+        "nghia": "hủy",
+        "vidu":  "The match had to be abandoned because of the bad weather."
+    },
+    {
+        "tu": "abandon",
+        "phienam": "/ə'bӕndən/",
+        "dang": "verb",
+        "nghia": "buông thả",
+        "vidu":  "After his wife's death, he abandoned himself to despair."
+    }
+]
