@@ -3,7 +3,7 @@ import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/go
 import auth from '@react-native-firebase/auth';
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import React, { useState, useEffect } from 'react';
-
+import {createUser} from '../services/userServices';
 // save the way sign in to app 1 is Facebook 2 is Google to choose way sign out
 var signInKey = 0;
 
@@ -30,9 +30,17 @@ const onFacebookButtonPress = async () => {
     const userSignIn = auth().signInWithCredential(facebookCredential);
     userSignIn.then((user)=>{
         signInKey = 1;
+        data = {
+            "id": user.uid,
+            "name": user.displayName,
+            "email": user.email,
+            "age": "",
+            "phone":"",
+        }
+        createUser(data)
         console.log(user);
     }).catch((error)=>{
-        console.log(error);
+        alert(error);
     })
     return userSignIn;
 };
@@ -57,9 +65,17 @@ const onGoogleButtonPress = async () => {
     const userSignIn = auth().signInWithCredential(googleCredential);
     userSignIn.then((user)=>{
         signInKey = 2;
+        data = {
+            "id": user.uid,
+            "name": user.displayName,
+            "email": user.email,
+            "age": "",
+            "phone":"",
+        }
+        createUser(data)
         console.log(user);
     }).catch((error)=>{
-        console.log(error);
+        alert(error);
     })
     return userSignIn;
 }
@@ -98,7 +114,7 @@ function User(){
     if (!user) {
         return (
           <View style={styles.container}>
-            <TouchableOpacity style={styles.fbBtn} onPress={onFacebookButtonPress}>
+            <TouchableOpacity style={styles.fbBtn} onPress= {onFacebookButtonPress}>
                 <Text style={styles.textBtn}>Facebook Sign-In</Text>
             </TouchableOpacity>
             <GoogleSigninButton

@@ -1,37 +1,26 @@
 import React, { useState } from 'react';
 import { SearchBar } from '@rneui/base';
-import { View, Text, StyleSheet } from 'react-native';
-import Record from './Record';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Icon } from '@rneui/themed';
 var data = require("../../data/anhviet.json");
 
 const SearchTab = () => {
   const [value, setValue] = useState("");
-
   return (
     <View>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
         <SearchBar
           platform="default"
-          containerStyle={{ borderRadius: 15 }}
+          containerStyle={{ borderRadius: 15, width: 300}}
           inputStyle={{color: '#000'}}
           lightTheme
-          loadingProps={{}}
           onChangeText={newVal => setValue(newVal)}
-          onClearText={() => console.log(onClearText())}
           placeholder="Search here..."
           placeholderTextColor="#888"
           cancelButtonTitle="Cancel"
-          onCancel={() => console.log(onCancel())}
           value={value}
         />
-        <Record
-          onSpeechEnd={(value) => {
-            setValue(value[0]);
-          }}
-          onSpeechStart={() => {
-            setValue("");
-          }}
-        />
+        <Icon name='search' type='FontAwesome' size={35} color='black' onPress={(value) => {}}/>
       </View>
       <View style={styles.dropdown}>
         {data.filter((item) =>{
@@ -44,10 +33,10 @@ const SearchTab = () => {
         .slice(0, 5)
         .map((item) => (
           <View style={styles.drop_row} key={item.tu}>
-            <Text style={{padding: 10, color: '#fff'}}>
-              {item.tu}
+            <TouchableOpacity style={{padding: 10, color: '#fff', flexDirection:'row', alignItems:'center'}} onPress={()=>{}}>
+              <Text>{item.tu}</Text>
               <Text style={{padding: 10, fontStyle: 'italic', fontSize: 11, fontWeight: '200'}}>  {item.dang}</Text>
-            </Text>
+            </TouchableOpacity>
           </View>
         ))}
       </View>

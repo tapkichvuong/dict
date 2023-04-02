@@ -1,9 +1,10 @@
 import React from 'react';
 import { Icon } from '@rneui/themed'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import {StyleSheet, Text} from 'react-native'
 import User from './User'
 import Home from './Home'
-import {StyleSheet, Text} from 'react-native'
+import Bookmark from './Bookmark';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,8 +19,8 @@ function NavBar(){
                 tabBarActiveBackgroundColor: '#548787',
                 tabBarItemStyle: {
                     height: 60,
-                    borderTopRightRadius: 30,//add border top right radius
-                    borderTopLeftRadius: 30,//add border top left radius
+                    borderTopRightRadius: 20,//add border top right radius
+                    borderTopLeftRadius: 20,//add border top left radius
                     paddingVertical:3
                 },
                 tabBarStyle: {
@@ -38,6 +39,25 @@ function NavBar(){
                     tabBarIcon:({ color, size }) => (
                         <Icon
                             name='home'
+                            type='font-awesome'
+                            color={color}
+                            size={size}
+                        />
+                    ),
+                    
+
+                }}
+            />
+            <Tab.Screen 
+                name="Bookmark"
+                component={Bookmark} 
+                options = {{
+                    tabBarLabel: ({ focused }) => {
+                        return <Text style={styles.label}>{focused ? "Bookmark": ""}</Text>
+                    },
+                    tabBarIcon:({ color, size }) => (
+                        <Icon
+                            name='bookmark'
                             type='font-awesome'
                             color={color}
                             size={size}
