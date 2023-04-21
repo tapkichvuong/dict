@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SearchBar } from '@rneui/base';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Icon } from '@rneui/themed'; 
-
-var data = require('../../data/en_UK.json');
+// var data = require('../../data/en_UK.json');
+import firestore from '@react-native-firebase/firestore';
 
 const SearchTab = (props) => {
+  const [data, setData] = useState();
   const [value, setValue] = useState("");
+  getWord = async() => {
+    const wordCollection = await firestore().collection('words');
+    const word = wordCollection.doc('0').get();
+    setData(word)
+  }
+  console.log(data);
   const handleSubmit = () => {
     const search = data.filter(
       (item) => {
@@ -31,6 +37,11 @@ const SearchTab = (props) => {
       props.onSubmit(search[0].id);
     }
   };
+  if(!data){
+    return (
+      <Text>Your usage is over limited </Text>
+    )
+  }
   return (
     <View>
       <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>

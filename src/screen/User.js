@@ -3,7 +3,7 @@ import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/go
 import auth from '@react-native-firebase/auth';
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import React, { useState, useEffect } from 'react';
-import {createUser} from '../services/userServices';
+
 // save the way sign in to app 1 is Facebook 2 is Google to choose way sign out
 var signInKey = 0;
 
@@ -37,7 +37,6 @@ const onFacebookButtonPress = async () => {
             "age": "",
             "phone":"",
         }
-        createUser(data)
         console.log(user);
     }).catch((error)=>{
         alert(error);
@@ -72,7 +71,6 @@ const onGoogleButtonPress = async () => {
             "age": "",
             "phone":"",
         }
-        createUser(data)
         console.log(user);
     }).catch((error)=>{
         alert(error);

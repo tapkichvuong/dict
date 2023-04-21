@@ -25,7 +25,8 @@ const Definition = ({ route, navigation }) => {
     const { id } = route.params;
     const[isBookmarked, setBookmarked] = useState(false);
     const search = data.find(item => item.id === id)
-    const[word, setWord] = useState(search);
+    const[word, setWord] = useState();
+    setWord(search)
     if(id == -1){
         return (
             <View style={styles.notFound}>
