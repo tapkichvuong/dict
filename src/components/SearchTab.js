@@ -6,13 +6,17 @@ import firestore from '@react-native-firebase/firestore';
 
 const SearchTab = (props) => {
   const [data, setData] = useState();
+  const [test, setTest] = useState();
   const [value, setValue] = useState("");
   getWord = async() => {
+    let all = []
     const wordCollection = await firestore().collection('words');
-    const word = wordCollection.doc('0').get();
-    setData(word)
+    wordCollection.get().then(querySnapshot => {
+      querySnapshot.forEach((doc)=> all.push(doc.data()));
+    });
+    setTest(all)
   }
-  console.log(data);
+  console.log(test)
   const handleSubmit = () => {
     const search = data.filter(
       (item) => {
