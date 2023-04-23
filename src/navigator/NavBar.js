@@ -25,7 +25,6 @@ function NavBar(){
                 },
                 tabBarStyle: {
                     height: 60,
-                    borderTopWidth: 1,
                 },
             }}
         >

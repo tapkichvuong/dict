@@ -12,10 +12,12 @@ function Home({navigation}){
     }
     return (
         <View style={styles.container}>
-            <SearchTab onSubmit={getID}/>
-            <View style={styles.homeView}>
-                <Image style={styles.logo} source={require("../../assets/book.png")} />
-                <Text style = {{color: '#f50', fontSize: 20, fontWeight: '800'}}> English - Viet Dictionary </Text>
+            <View >
+                <SearchTab onSubmit={getID}/>
+                <View style={styles.homeView}>
+                    <Image style={styles.logo} source={require("../../assets/book.png")} />
+                    <Text style = {{color: '#f50', fontSize: 20, fontWeight: '800'}}> English - Viet Dictionary </Text>
+                </View>
             </View>
         </View>
     )
@@ -28,15 +30,17 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
       },
     homeView:{
-        height: windowHeight-200,
+        marginTop: 150,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: "#7AD6BC",
     },
     container: {
+        flex: 1,
         padding: 20,
         paddingTop: Constants.statusBarHeight + 50,
-        backgroundColor: "#7AD6BC",
-        height: windowHeight-30,     
+        backgroundColor: "#7AD6BC", 
+        flexDirection: "column",
     },
 })
 

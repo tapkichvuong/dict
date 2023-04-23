@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { SearchBar } from '@rneui/base';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-// var data = require('../../data/en_UK.json');
+var dict = require('../../data/en_UK.json');
 import firestore from '@react-native-firebase/firestore';
 
 const SearchTab = (props) => {
-  const [data, setData] = useState();
-  const [test, setTest] = useState();
+  const [data, setTest] = useState([]);
   const [value, setValue] = useState("");
-  getWord = async() => {
+  useEffect(() => {
     let all = []
-    const wordCollection = await firestore().collection('words');
-    wordCollection.get().then(querySnapshot => {
-      querySnapshot.forEach((doc)=> all.push(doc.data()));
-    });
-    setTest(all)
-  }
-  console.log(test)
+    const db = firestore();
+    db
+      .collection('words')
+      .get()
+      .then(querySnapshot => {
+        console.log('Total users: ', querySnapshot.size);
+    
+        querySnapshot.forEach(documentSnapshot => {
+          all.push(documentSnapshot.data());
+        });
+        setTest(all)
+      });
+  },[])
   const handleSubmit = () => {
     const search = data.filter(
       (item) => {
@@ -28,6 +33,7 @@ const SearchTab = (props) => {
     }else{
       props.onSubmit(search[0].id);
     }
+    setValue('');
   }
   const handleDropdown = (searchTerm) => {
     const search = data.filter(
@@ -40,6 +46,7 @@ const SearchTab = (props) => {
     }else{
       props.onSubmit(search[0].id);
     }
+    setValue('');
   };
   if(!data){
     return (
@@ -70,11 +77,11 @@ const SearchTab = (props) => {
             searchTerm && word.startsWith(searchTerm) && word !== searchTerm
           );
         })
-        .slice(0, 5)
+        .slice(0, 6)
         .map((item, idx) => (
           <View style={styles.drop_row} key={idx}>
-            <TouchableOpacity style={{padding: 10, color: '#fff', flexDirection:'row', alignItems:'center'}} onPress={()=>handleDropdown(item.word)}>
-              <Text>{item.word}</Text>
+            <TouchableOpacity style={{padding: 10, color: '#fff',flexDirection:'row' , alignItems:'center'}} onPress={()=>handleDropdown(item.word)}>
+              <Text style={styles.word}>{item.word}</Text>
               <Text style={styles.form}> {item.form}</Text>
             </TouchableOpacity>
           </View>
@@ -87,13 +94,11 @@ const SearchTab = (props) => {
 
 const styles = StyleSheet.create({
   dropdown: {
-    position: 'absolute',
-    top: 80,
     marginTop: 5,
     flexDirection: 'column',
     backgroundColor: '#548787',
     borderRadius: 5,
-    zIndex: 1
+    zIndex: 2
   },
   drop_row: {
     width: 300,
@@ -102,10 +107,15 @@ const styles = StyleSheet.create({
     borderBottomColor: '#9EF78D',
     borderBottomWidth: 0.6
   },
+  word: {
+    padding: 10,
+    fontSize: 15,
+    fontWeight: '400'
+  },
   form: {
     padding: 10,
     fontStyle: 'italic',
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: '200'
   }
 });
