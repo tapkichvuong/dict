@@ -5,9 +5,10 @@ import { Icon, Image, Button, Divider } from "@rneui/themed";
 import Constants from 'expo-constants';
 const Sound = require('react-native-sound');
 import storage from '@react-native-firebase/storage';
-import data from '../../data/en_UK.json';
+import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
+const data = require('../../data/en_UK.json')
 // get height of phone screen
 import {Dimensions} from 'react-native';
 const windowHeight = Dimensions.get('window').height;
@@ -16,13 +17,10 @@ const Definition = ({ route, navigation }) => {
     const { id } = route.params;
     const[isBookmarked, setBookmarked] = useState(false);
     const [word, setWord] = useState(data[0]);
-    const updateState = data => {
-        setWord(data)
-    }
     useEffect(() => {
         const db = firestore();
         db.collection("words").doc(String(id)).get().then((doc) => {
-            updateState(doc.data());
+            setWord(doc.data());
         });
       },[])
     const playTrack = async(audio) => {
@@ -35,6 +33,63 @@ const Definition = ({ route, navigation }) => {
             }
         })
     }
+    // Set an initializing state whilst Firebase connects
+    const [initializing, setInitializing] = useState(true);
+    const [user, setUser] = useState();
+
+    // Handle user state changes
+    function onAuthStateChanged(user) {
+        setUser(user);
+        if (initializing) setInitializing(false);
+    }
+
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; // unsubscribe on unmount
+    }, []);
+    // handle display of bookmark button
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged((user)=>{
+            let bookmark = []
+            const docRef = firestore().collection('bookmarks').doc(user.uid)
+            docRef.get().then((doc)=>{
+                bookmark = doc.data()['bookmark']
+                // get database if bookmark exists then set isBookmark to true
+                if(bookmark.find(({value})=> value === word.word)){
+                    setBookmarked(true)
+                }
+            })
+            
+        });
+        return subscriber; // unsubscribe on unmount
+    }, []);
+    const addBookmark = () => {
+        if(!user){
+            alert("You need to login to add a bookmark")
+        }else{
+            const db = firestore();
+            db.collection("bookmarks").doc(user.uid).update(
+                {
+                    bookmark: firestore.FieldValue.arrayUnion({id: String(id), value: word.word}),
+                }
+            )
+            setBookmarked(true)
+        }
+    }
+    const removeBookmark = () => {
+        if(!user){
+            alert("You need to login to add a bookmark")
+        }else{
+            const db = firestore();
+            db.collection("bookmarks").doc(user.uid).update(
+                {
+                    bookmark: firestore.FieldValue.arrayRemove({id: String(id), value: word.word}),
+                }
+            )
+            setBookmarked(false)
+        }
+    }
+    if (initializing) return null;
     if(id == -1){
         return (
             <View style={styles.notFound}>
@@ -59,8 +114,8 @@ const Definition = ({ route, navigation }) => {
                     <View style={styles.navigation}>
                         <Icon name='close' type='FontAwesome' color='#548787' size={40} onPress={() => navigation.goBack()}/>
                         {isBookmarked ? 
-                        <Icon name='bookmark' type='FontAwesome' color='#548787' size={40} onPress={() => setBookmarked(false)}/> 
-                        : <Icon name='bookmark-border' type='FontAwesome' color='#548787' size={40} onPress={() => setBookmarked(true)}/>}
+                        <Icon name='bookmark' type='FontAwesome' color='#548787' size={40} onPress={removeBookmark}/> 
+                        : <Icon name='bookmark-border' type='FontAwesome' color='#548787' size={40} onPress={addBookmark}/>}
                     </View>
                     <View>
                         <LinearGradient 
@@ -146,7 +201,7 @@ const styles = StyleSheet.create({
         padding: 5, 
         fontStyle: 'italic', 
         fontSize: 15, 
-        fontWeight: '200',
+        fontWeight: '300',
         color:'white'
     },
     box: {

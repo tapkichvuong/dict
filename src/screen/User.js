@@ -3,10 +3,17 @@ import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/go
 import auth from '@react-native-firebase/auth';
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import React, { useState, useEffect } from 'react';
+import firestore from '@react-native-firebase/firestore';
 
 // save the way sign in to app 1 is Facebook 2 is Google to choose way sign out
 var signInKey = 0;
-
+const createBookmark = (user)=>{
+    const docRef = firestore().collection("bookmarks").doc(user.user.uid);
+    docRef.set({
+        id: user.user.uid,
+        bookmark: ['']
+    }, {merge: true});
+}
 //Facebook Sign In
 const onFacebookButtonPress = async () => {
     // Attempt login with permissions
@@ -30,13 +37,14 @@ const onFacebookButtonPress = async () => {
     const userSignIn = auth().signInWithCredential(facebookCredential);
     userSignIn.then((user)=>{
         signInKey = 1;
-        data = {
+        let data = {
             "id": user.uid,
             "name": user.displayName,
             "email": user.email,
             "age": "",
             "phone":"",
         }
+        createBookmark(user);
         console.log(user);
     }).catch((error)=>{
         alert(error);
@@ -64,7 +72,7 @@ const onGoogleButtonPress = async () => {
     const userSignIn = auth().signInWithCredential(googleCredential);
     userSignIn.then((user)=>{
         signInKey = 2;
-        data = {
+        let data = {
             "id": user.uid,
             "name": user.displayName,
             "email": user.email,
@@ -72,6 +80,7 @@ const onGoogleButtonPress = async () => {
             "phone":"",
         }
         console.log(user);
+        createBookmark(user);
     }).catch((error)=>{
         alert(error);
     })
