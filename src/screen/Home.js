@@ -2,9 +2,6 @@ import {View, StyleSheet, Text} from 'react-native';
 import SearchTab from '../components/SearchTab';
 import Constants from 'expo-constants';
 import { Image } from '@rneui/themed';
-// get height of phone screen
-import {Dimensions} from 'react-native';
-const windowHeight = Dimensions.get('window').height;
 
 function Home({navigation}){
     const getID = (id) => {

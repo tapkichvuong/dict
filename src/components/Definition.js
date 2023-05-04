@@ -8,21 +8,20 @@ import storage from '@react-native-firebase/storage';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-const data = require('../../data/en_UK.json')
 // get height of phone screen
 import {Dimensions} from 'react-native';
 const windowHeight = Dimensions.get('window').height;
-
+const defaultWord = {"id": -1, "word": "", "form": "", "spelling": [""], "definition": [""], "audio": [""], "image": "https://ik.imagekit.io/ct201dict/banner.jpg"}
 const Definition = ({ route, navigation }) => {
     const { id } = route.params;
     const[isBookmarked, setBookmarked] = useState(false);
-    const [word, setWord] = useState(data[0]);
+    const [word, setWord] = useState(defaultWord);
     useEffect(() => {
         const db = firestore();
         db.collection("words").doc(String(id)).get().then((doc) => {
             setWord(doc.data());
         });
-      },[])
+      });
     const playTrack = async(audio) => {
         const url = await storage().ref(audio).getDownloadURL();
         const track = new Sound(url, Sound.MAIN_BUNDLE, (e) => {
@@ -50,19 +49,20 @@ const Definition = ({ route, navigation }) => {
     // handle display of bookmark button
     useEffect(() => {
         const subscriber = auth().onAuthStateChanged((user)=>{
-            let bookmark = []
-            const docRef = firestore().collection('bookmarks').doc(user.uid)
-            docRef.get().then((doc)=>{
-                bookmark = doc.data()['bookmark']
+            if(user){
+                const docRef = firestore().collection('bookmarks').doc(user.uid)
+                docRef.get().then((doc)=>{
                 // get database if bookmark exists then set isBookmark to true
-                if(bookmark.find(({value})=> value === word.word)){
+                if(doc.data()['bookmark'].find(({value})=> value === word.word)){
                     setBookmarked(true)
                 }
             })
-            
+            }else{
+                alert("you are not login")
+            }
         });
         return subscriber; // unsubscribe on unmount
-    }, []);
+    });
     const addBookmark = () => {
         if(!user){
             alert("You need to login to add a bookmark")
@@ -78,7 +78,7 @@ const Definition = ({ route, navigation }) => {
     }
     const removeBookmark = () => {
         if(!user){
-            alert("You need to login to add a bookmark")
+            alert("You need to login to remove a bookmark")
         }else{
             const db = firestore();
             db.collection("bookmarks").doc(user.uid).update(
@@ -107,61 +107,62 @@ const Definition = ({ route, navigation }) => {
             </View>
         );
     }else {
-    return (
-        <ScrollView>
-            <View style={styles.scrollView}>
-                <View style={styles.stack}>
-                    <View style={styles.navigation}>
-                        <Icon name='close' type='FontAwesome' color='#548787' size={40} onPress={() => navigation.goBack()}/>
-                        {isBookmarked ? 
-                        <Icon name='bookmark' type='FontAwesome' color='#548787' size={40} onPress={removeBookmark}/> 
-                        : <Icon name='bookmark-border' type='FontAwesome' color='#548787' size={40} onPress={addBookmark}/>}
-                    </View>
-                    <View>
-                        <LinearGradient 
-                        colors={['#191E5D', '#0F133A']} 
-                        start={{ x: 0, y: 0 }} 
-                        end={{ x: 1, y: 0 }}
-                        locations={[0.2,0.8]} 
-                        style={styles.label}>
-                            <Text style={styles.word}> {word.word}</Text>
-                            <Text style={styles.form}> {word.form}</Text>
-                            <View style={{flexDirection:'row'}}>
-                                <View>
-                                    {word.spelling.map((spell, idx)=>{
-                                        return <Text style={styles.form} key={idx}> {spell}</Text>
-                                    })}
+        return (word && (
+            <ScrollView>
+                <View style={styles.scrollView}>
+                    <View style={styles.stack}>
+                        <View style={styles.navigation}>
+                            <Icon name='close' type='FontAwesome' color='#548787' size={40} onPress={() => navigation.goBack()}/>
+                            {isBookmarked ? 
+                            <Icon name='bookmark' type='FontAwesome' color='#548787' size={40} onPress={removeBookmark}/> 
+                            : <Icon name='bookmark-border' type='FontAwesome' color='#548787' size={40} onPress={addBookmark}/>}
+                        </View>
+                        <View>
+                            <LinearGradient 
+                            colors={['#191E5D', '#0F133A']} 
+                            start={{ x: 0, y: 0 }} 
+                            end={{ x: 1, y: 0 }}
+                            locations={[0.2,0.8]} 
+                            style={styles.label}>
+                                <Text style={styles.word}> {word.word}</Text>
+                                <Text style={styles.form}> {word.form}</Text>
+                                <View style={{flexDirection:'row'}}>
+                                    <View>
+                                        {word.spelling.map((spell, idx)=>{
+                                            return <Text style={styles.form} key={idx}> {spell}</Text>
+                                        })}
+                                    </View>
+                                    <View>
+                                        {word.audio.map((audio, idx)=>{
+                                            return (
+                                                <View style={styles.audio} key={idx}> 
+                                                    <Icon name="volume-up" type="font-awesome" color='#f50' onPress={()=>playTrack(audio)}/>
+                                                </View>
+                                            )
+                                        })} 
+                                    </View> 
                                 </View>
-                                <View>
-                                    {word.audio.map((audio, idx)=>{
-                                        return (
-                                            <View style={styles.audio} key={idx}> 
-                                                <Icon name="volume-up" type="font-awesome" color='#f50' onPress={()=>playTrack(audio)}/>
-                                            </View>
-                                        )
-                                    })} 
-                                </View> 
-                            </View>
-                        </LinearGradient>
-                    </View>
-                    <Image source={{ uri:word.image}}/>
-                    {word.definition.map((def,idx)=>{
-                        return (
-                            <View  key={idx}>
-                                <Divider color='#548787' style={
-                                    [idx===0 ? {display:'none'} : {display:'flex'},
-                                    {width:"90%",margin:20}]
-                                }/>
-                                <View style={styles.box}>
-                                    <Text style={styles.def}>{def}</Text>
+                            </LinearGradient>
+                        </View>
+                        <Image source={{ uri:word.image}} containerStyle={styles.img}/>
+                        {word.definition.map((def,idx)=>{
+                            return (
+                                <View  key={idx}>
+                                    <Divider color='#548787' style={
+                                        [idx===0 ? {display:'none'} : {display:'flex'},
+                                        {width:"90%",margin :10}]
+                                    }/>
+                                    <View style={styles.box}>
+                                        <Text style={styles.def}>{def}</Text>
+                                    </View>
                                 </View>
-                            </View>
-                        )
-                    })}
+                            )
+                        })}
+                    </View>
                 </View>
-            </View>
-        </ScrollView>
-    )}
+            </ScrollView>
+        ))
+    }
 }
 
 const styles = StyleSheet.create({
@@ -208,10 +209,11 @@ const styles = StyleSheet.create({
         padding: 15, 
         borderRadius: 10,
         backgroundColor: '#fff',
+        borderLeftColor: '#93EDBA',
+        borderLeftWidth: 10
     },
     label: {
-        marginTop:10,
-        marginBottom:30,
+        marginVertical:10,
         borderRadius: 15,
     },
     def: {
@@ -221,6 +223,11 @@ const styles = StyleSheet.create({
     },
     audio:{
         padding: 5,
+    },
+    img: {
+        aspectRatio: 1,
+        marginVertical: 10,
+        width: '100%'
     }
 })
 export default Definition

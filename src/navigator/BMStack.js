@@ -13,7 +13,6 @@ function BMStack() {
     >
       <Stack.Screen name="Bookmark" component={Bookmark} />
       <Stack.Screen name="Definition" component={Definition} />
-
     </Stack.Navigator>
   );
 }
