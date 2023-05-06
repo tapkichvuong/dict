@@ -1,20 +1,20 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import Bookmark from '../screen/Bookmark';
 import Definition from '../components/Definition';
+import NavBar from './NavBar';
 
 const Stack = createStackNavigator();
 
-function BMStack() {
+function StackNav() {
   return (
     <Stack.Navigator
         screenOptions={{ 
             headerShown: false,
         }}
     >
-      <Stack.Screen name="Bookmark" component={Bookmark} />
+      <Stack.Screen name="NavBar" component={NavBar} />
       <Stack.Screen name="Definition" component={Definition} />
     </Stack.Navigator>
   );
 }
 
-export default BMStack
+export default StackNav

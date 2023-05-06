@@ -3,15 +3,16 @@ import { Icon } from '@rneui/themed'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {StyleSheet, Text} from 'react-native'
 import User from '../screen/User'
-import HomeStack from './HomeStack';
-import BMStack from './BMStack';
+import Bookmark from '../screen/Bookmark'
+import Home from '../screen/Home'
+
 
 const Tab = createBottomTabNavigator();
 
 function NavBar(){
     return (
         <Tab.Navigator
-            initialRouteName="HomeStack"
+            initialRouteName="Home"
             screenOptions={{ 
                 headerShown: false,
                 tabBarActiveTintColor: "#9EF78D",
@@ -29,8 +30,8 @@ function NavBar(){
             }}
         >
             <Tab.Screen 
-                name="HomeStack"
-                component={HomeStack} 
+                name="Home"
+                component={Home} 
                 options = {{
                     tabBarLabel: ({ focused }) => {
                         return <Text style={styles.label}>{focused ? "Home": ""}</Text>
@@ -48,8 +49,8 @@ function NavBar(){
                 }}
             />
             <Tab.Screen 
-                name="BookmarkStack"
-                component={BMStack} 
+                name="Bookmark"
+                component={Bookmark} 
                 options = {{
                     tabBarLabel: ({ focused }) => {
                         return <Text style={styles.label}>{focused ? "Bookmark": ""}</Text>
