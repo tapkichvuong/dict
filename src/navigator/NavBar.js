@@ -6,7 +6,6 @@ import User from '../screen/User'
 import Bookmark from '../screen/Bookmark'
 import Home from '../screen/Home'
 
-
 const Tab = createBottomTabNavigator();
 
 function NavBar(){
@@ -91,6 +90,7 @@ function NavBar(){
 
 const styles = StyleSheet.create({
     label: {
+        fontFamily: 'Roboto-Regular',
         fontSize: 12, 
         fontWeight: '500', 
         color: '#9EF78D'

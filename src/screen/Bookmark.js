@@ -5,20 +5,18 @@ import firestore from '@react-native-firebase/firestore';
 import Constants from 'expo-constants';
 
 const Bookmark = ({navigation}) => {
-    const [bookmark, setBookmark] = useState();
+    const [bookmark, setBookmark] = useState([]);
     useEffect(() => {
         const subscriber = auth().onAuthStateChanged((user)=>{
             let bookmark = []
             if(user){
                 const docRef = firestore().collection('bookmarks').doc(user.uid)
                 docRef.get().then((doc)=>{
-                // get database if bookmark exists then set isBookmark to true
-                bookmark = doc.data()['bookmark']
-                bookmark = bookmark.sort()
-                setBookmark(bookmark)
-            })
-            }else{
-                alert("you are not login")
+                    // get database if bookmark exists then set isBookmark to true
+                    bookmark = doc.data()['bookmark']
+                    bookmark = bookmark.sort()
+                    setBookmark(bookmark)
+                })
             }
         });
         return subscriber; // unsubscribe on unmount

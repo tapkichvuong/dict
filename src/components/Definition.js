@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { View, StyleSheet, Text, ScrollView } from "react-native";
+import { View, StyleSheet, Text, ScrollView, ImageBackground } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { Icon, Image, Button, Divider } from "@rneui/themed";
 import Constants from 'expo-constants';
@@ -8,10 +8,11 @@ import storage from '@react-native-firebase/storage';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
+const bgImg = require('../../assets/backgroundImage.jpg')
 // get height of phone screen
 import {Dimensions} from 'react-native';
 const windowHeight = Dimensions.get('window').height;
-const defaultWord = {"id": -1, "word": "", "form": "", "spelling": [""], "definition": [""], "audio": [""], "image": "https://ik.imagekit.io/ct201dict/banner.jpg"}
+const defaultWord = {"id": -1, "word": "", "form": "", "spelling": [""], "definition": [""], "audio": [""], "image": "https://ik.imagekit.io/ct201dict"}
 const Definition = ({ route, navigation }) => {
     const { id } = route.params;
     const[isBookmarked, setBookmarked] = useState(false);
@@ -52,13 +53,11 @@ const Definition = ({ route, navigation }) => {
             if(user){
                 const docRef = firestore().collection('bookmarks').doc(user.uid)
                 docRef.get().then((doc)=>{
-                // get database if bookmark exists then set isBookmark to true
-                if(doc.data()['bookmark'].find(({value})=> value === word.word)){
-                    setBookmarked(true)
-                }
-            })
-            }else{
-                alert("you are not login")
+                    // get database if bookmark exists then set isBookmark to true
+                    if(doc.data()['bookmark'].find(({value})=> value === word.word)){
+                        setBookmarked(true)
+                    }
+                })
             }
         });
         return subscriber; // unsubscribe on unmount
@@ -108,66 +107,67 @@ const Definition = ({ route, navigation }) => {
         );
     }else {
         return (word && (
-            <ScrollView>
-                <View style={styles.scrollView}>
-                    <View style={styles.stack}>
-                        <View style={styles.navigation}>
-                            <Icon name='close' type='FontAwesome' color='#548787' size={40} onPress={() => navigation.goBack()}/>
-                            {isBookmarked ? 
-                            <Icon name='bookmark' type='FontAwesome' color='#548787' size={40} onPress={removeBookmark}/> 
-                            : <Icon name='bookmark-border' type='FontAwesome' color='#548787' size={40} onPress={addBookmark}/>}
-                        </View>
-                        <View>
-                            <LinearGradient 
-                            colors={['#191E5D', '#0F133A']} 
-                            start={{ x: 0, y: 0 }} 
-                            end={{ x: 1, y: 0 }}
-                            locations={[0.2,0.8]} 
-                            style={styles.label}>
-                                <Text style={styles.word}> {word.word}</Text>
-                                <Text style={styles.form}> {word.form}</Text>
-                                <View style={{flexDirection:'row'}}>
-                                    <View>
-                                        {word.spelling.map((spell, idx)=>{
-                                            return <Text style={styles.form} key={idx}> {spell}</Text>
-                                        })}
+            <ImageBackground source={bgImg}>
+                <ScrollView>
+                    <View style={styles.scrollView}>
+                        <View style={styles.stack}>
+                            <View style={styles.navigation}>
+                                <Icon name='close' type='FontAwesome' color='#548787' size={50} onPress={() => navigation.goBack()}/>
+                                {isBookmarked ? 
+                                <Icon name='bookmark' type='FontAwesome' color='#548787' size={50} onPress={removeBookmark}/> 
+                                : <Icon name='bookmark-border' type='FontAwesome' color='#548787' size={50} onPress={addBookmark}/>}
+                            </View>
+                            <View>
+                                <LinearGradient 
+                                colors={['#191E5D', '#0F133A']} 
+                                start={{ x: 0, y: 0 }} 
+                                end={{ x: 1, y: 0 }}
+                                locations={[0.2,0.8]} 
+                                style={styles.label}>
+                                    <Text style={styles.word}> {word.word}</Text>
+                                    <Text style={styles.form}> {word.form}</Text>
+                                    <View style={{flexDirection:'row'}}>
+                                        <View>
+                                            {word.spelling.map((spell, idx)=>{
+                                                return <Text style={styles.form} key={idx}> {spell}</Text>
+                                            })}
+                                        </View>
+                                        <View>
+                                            {word.audio.map((audio, idx)=>{
+                                                return (
+                                                    <View style={styles.audio} key={idx}> 
+                                                        <Icon name="volume-up" type="font-awesome" color='#f50' onPress={()=>playTrack(audio)}/>
+                                                    </View>
+                                                )
+                                            })} 
+                                        </View> 
                                     </View>
-                                    <View>
-                                        {word.audio.map((audio, idx)=>{
-                                            return (
-                                                <View style={styles.audio} key={idx}> 
-                                                    <Icon name="volume-up" type="font-awesome" color='#f50' onPress={()=>playTrack(audio)}/>
-                                                </View>
-                                            )
-                                        })} 
-                                    </View> 
-                                </View>
-                            </LinearGradient>
-                        </View>
-                        <Image source={{ uri:word.image}} containerStyle={styles.img}/>
-                        {word.definition.map((def,idx)=>{
-                            return (
-                                <View  key={idx}>
-                                    <Divider color='#548787' style={
-                                        [idx===0 ? {display:'none'} : {display:'flex'},
-                                        {width:"90%",margin :10}]
-                                    }/>
-                                    <View style={styles.box}>
-                                        <Text style={styles.def}>{def}</Text>
+                                </LinearGradient>
+                            </View>
+                            <Image source={{ uri:word.image}} containerStyle={styles.img}/>
+                            {word.definition.map((def,idx)=>{
+                                return (
+                                    <View  key={idx}>
+                                        <Divider color='#548787' style={
+                                            [idx===0 ? {display:'none'} : {display:'flex'},
+                                            {width:"90%",margin :10}]
+                                        }/>
+                                        <View style={styles.box}>
+                                            <Text style={styles.def}>{def}</Text>
+                                        </View>
                                     </View>
-                                </View>
-                            )
-                        })}
+                                )
+                            })}
+                        </View>
                     </View>
-                </View>
-            </ScrollView>
+                </ScrollView>
+            </ImageBackground>
         ))
     }
 }
 
 const styles = StyleSheet.create({
     scrollView: {
-        backgroundColor: "#F1F3F4",
         paddingTop: Constants.statusBarHeight,
     },
     stack: {
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     word: {
         textTransform: 'capitalize',
         padding: 5, 
-        fontSize: 25, 
+        fontSize: 27, 
         fontWeight: '500',
         color:'white'
     },
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
         textTransform: 'capitalize',
         padding: 5, 
         fontStyle: 'italic', 
-        fontSize: 15, 
+        fontSize: 20, 
         fontWeight: '300',
         color:'white'
     },
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     },
     def: {
         color:'#548787',
-        fontSize: 17,
+        fontSize: 20,
         fontWeight: '400'
     },
     audio:{
@@ -227,7 +227,8 @@ const styles = StyleSheet.create({
     img: {
         aspectRatio: 1,
         marginVertical: 10,
-        width: '100%'
+        width: '100%',
+        borderRadius: 10,
     }
 })
 export default Definition

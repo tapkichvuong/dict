@@ -1,18 +1,24 @@
-import { View, Text, Image, TouchableOpacity, Button, StyleSheet} from 'react-native';
+import { View, Text,Image, TouchableOpacity, StyleSheet, ImageBackground} from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 import React, { useState, useEffect } from 'react';
 import firestore from '@react-native-firebase/firestore';
 
+const bgImg = require('../../assets/backgroundImage.jpg')
+
 // save the way sign in to app 1 is Facebook 2 is Google to choose way sign out
 var signInKey = 0;
 const createBookmark = (user)=>{
     const docRef = firestore().collection("bookmarks").doc(user.user.uid);
-    docRef.set({
-        id: user.user.uid,
-        bookmark: ['']
-    }, {merge: true});
+    docRef.get().then((doc)=>{
+        if(!doc.exists){
+            docRef.set({
+                id: user.user.uid,
+                bookmark: []
+            });
+        }
+    })
 }
 //Facebook Sign In
 const onFacebookButtonPress = async () => {
@@ -37,13 +43,6 @@ const onFacebookButtonPress = async () => {
     const userSignIn = auth().signInWithCredential(facebookCredential);
     userSignIn.then((user)=>{
         signInKey = 1;
-        let data = {
-            "id": user.uid,
-            "name": user.displayName,
-            "email": user.email,
-            "age": "",
-            "phone":"",
-        }
         createBookmark(user);
         console.log(user);
     }).catch((error)=>{
@@ -72,13 +71,6 @@ const onGoogleButtonPress = async () => {
     const userSignIn = auth().signInWithCredential(googleCredential);
     userSignIn.then((user)=>{
         signInKey = 2;
-        let data = {
-            "id": user.uid,
-            "name": user.displayName,
-            "email": user.email,
-            "age": "",
-            "phone":"",
-        }
         console.log(user);
         createBookmark(user);
     }).catch((error)=>{
@@ -139,32 +131,36 @@ function User(){
     }
 
     return (
-        <View style={styles.container}>
-            <Image 
-                source={{uri: user.photoURL}}
-                style={{width: 200, height: 200, borderRadius: 100, marginBottom: 50}}
-            />
-            <Text style={styles.text}> Welcome, {user.displayName}</Text>
-            <TouchableOpacity style={styles.button} onPress={(signInKey == 2) ? GGsignOut : FBsignOut}>
-                <Text style={styles.textBtn}>Sign Out</Text>
-            </TouchableOpacity>
-        </View>
+        <ImageBackground source={bgImg} style={styles.bgImg}>
+            <View style={styles.container}>
+                <Image 
+                    source={{uri: user.photoURL}}
+                    style={styles.img}
+                />
+                <Text style={styles.text}> Welcome, {user.displayName}</Text>
+                <TouchableOpacity style={styles.button} onPress={(signInKey == 2) ? GGsignOut : FBsignOut}>
+                    <Text style={styles.textBtn}>Sign Out</Text>
+                </TouchableOpacity>
+            </View>
+        </ImageBackground>
     );
 };
 
 const styles = StyleSheet.create({
+    bgImg: {
+        flex: 1,
+    },
     container: {
         flex: 1,
-        backgroundColor: '#fff',
         alignItems:'center',
         justifyContent: 'center'
     },
     text: {
-        fontSize: 20,
-        fontWeight: '500',
+        fontSize: 30,
+        fontWeight: '600',
     },
     textBtn: {
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: '400',
         color: '#fff'
     },
@@ -185,6 +181,12 @@ const styles = StyleSheet.create({
         height: 70,
         marginTop: 50,
         borderRadius: 5,
+    },
+    img: {
+        width: 250, 
+        height: 250, 
+        borderRadius: 125, 
+        marginBottom: 50
     }
 })
 
