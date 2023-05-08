@@ -73,7 +73,7 @@ const SearchTab = (props) => {
           const searchTerm = value.toLowerCase();
           const word = item.word.toLowerCase();
           return (
-            searchTerm && word.startsWith(searchTerm) && word !== searchTerm
+            searchTerm && word.startsWith(searchTerm)
           );
         })
         .slice(0, 6)
