@@ -156,11 +156,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     text: {
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: '600',
     },
     textBtn: {
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: '400',
         color: '#fff'
     },
@@ -183,9 +183,9 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     img: {
-        width: 250, 
-        height: 250, 
-        borderRadius: 125, 
+        width: 200, 
+        height: 200, 
+        borderRadius: 100, 
         marginBottom: 50
     }
 })

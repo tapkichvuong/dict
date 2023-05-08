@@ -6,6 +6,9 @@ import Constants from 'expo-constants';
 
 const Bookmark = ({navigation}) => {
     const [bookmark, setBookmark] = useState([]);
+    // Set an initializing state whilst Firebase connects
+    const [initializing, setInitializing] = useState(true);
+    const [user, setUser] = useState();
     useEffect(() => {
         const subscriber = auth().onAuthStateChanged((user)=>{
             let bookmark = []
@@ -21,6 +24,34 @@ const Bookmark = ({navigation}) => {
         });
         return subscriber; // unsubscribe on unmount
     });
+    // Handle user state changes
+    function onAuthStateChanged(user) {
+        setUser(user);
+        if (initializing) setInitializing(false);
+    }
+
+    useEffect(() => {
+        const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+        return subscriber; // unsubscribe on unmount
+    }, []);
+    if (initializing) return null;
+
+    if(!user){
+        return (
+            <View style={styles.container}>
+                <View styles={styles.header}>
+                    <Text style={styles.headerLB}>
+                        Bookmarks
+                    </Text>
+                </View>
+                <View style={styles.context}>
+                    <Text style={styles.alert}>
+                        You are not login
+                    </Text>
+                </View>
+            </View>
+        )
+    }
     const handlePress = (id) => {
         navigation.navigate('Definition', {id: id});
     }
@@ -77,5 +108,15 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: '500'
     },
+    alert:{
+        color:'red',
+        fontSize: 20,
+        fontWeight: '400'
+    },
+    context:{
+        justifyContent: 'center',
+        alignItems:'center',
+        flex:1
+    }
 })
 export default Bookmark

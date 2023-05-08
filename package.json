@@ -2,7 +2,7 @@
   "name": "dict",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start --dev-client",
+    "start": "expo start --dev-client --tunnel",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web"
@@ -42,7 +42,7 @@
     "react-native-gesture-handler": "~2.9.0",
     "react-native-pager-view": "6.2.0",
     "react-native-paper": "^5.2.0",
-    "react-native-reanimated": "^3.0.2",
+    "react-native-reanimated": "^3.1.0",
     "react-native-safe-area-context": "4.5.1",
     "react-native-screens": "~3.20.0",
     "react-native-sound": "^0.11.2",

@@ -229,6 +229,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         width: '100%',
         borderRadius: 10,
+
     }
 })
 export default Definition
