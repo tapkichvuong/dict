@@ -13,12 +13,11 @@ const SearchTab = (props) => {
       .collection('words')
       .get()
       .then(querySnapshot => {
-        console.log('Total users: ', querySnapshot.size);
-    
         querySnapshot.forEach(documentSnapshot => {
           all.push(documentSnapshot.data());
         });
         setTest(all)
+        console.log('Done!')
       });
   })
   const handleSubmit = () => {

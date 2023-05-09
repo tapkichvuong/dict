@@ -49,18 +49,24 @@ const Definition = ({ route, navigation }) => {
     }, []);
     // handle display of bookmark button
     useEffect(() => {
-        const subscriber = auth().onAuthStateChanged((user)=>{
-            if(user){
-                const docRef = firestore().collection('bookmarks').doc(user.uid)
-                docRef.get().then((doc)=>{
-                    // get database if bookmark exists then set isBookmark to true
-                    if(doc.data()['bookmark'].find(({value})=> value === word.word)){
-                        setBookmarked(true)
-                    }
-                })
-            }
-        });
-        return subscriber; // unsubscribe on unmount
+        const interval = setInterval(()=>{
+            const subscriber = auth().onAuthStateChanged((user)=>{
+                if(user){
+                    const docRef = firestore().collection('bookmarks').doc(user.uid)
+                    docRef.get().then((doc)=>{
+                        // get database if bookmark exists then set isBookmark to true
+                        bookmark = doc.data()['bookmark']
+                        if(bookmark.find(({id})=> id == word.id)){
+                            setBookmarked(true)
+                        }else{
+                            setBookmarked(false)
+                        }
+                    })
+                }
+            });
+            return subscriber;
+        }, 5000) 
+        return () => clearInterval(interval);// unsubscribe on unmount
     });
     const addBookmark = () => {
         if(!user){
