@@ -137,7 +137,8 @@ function User(){
                     source={{uri: user.photoURL}}
                     style={styles.img}
                 />
-                <Text style={styles.text}> Welcome, {user.displayName}</Text>
+                <Text style={styles.text}> Welcome,</Text>
+                <Text style={styles.text}>{user.displayName}</Text>
                 <TouchableOpacity style={styles.button} onPress={(signInKey == 2) ? GGsignOut : FBsignOut}>
                     <Text style={styles.textBtn}>Sign Out</Text>
                 </TouchableOpacity>
