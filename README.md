@@ -1,15 +1,15 @@
 # Visual Dictionary
 
-![home](https://github.com/tapkichvuong/dict/blob/main/demo/home.jpg)
+## Screenshots
+<div style="display:flex;justify-content:center;">
+  <img src="https://github.com/tapkichvuong/dict/blob/main/demo/home.jpg" width=20% height=20%>
+  <img src="https://github.com/tapkichvuong/dict/blob/main/demo/login.jpg" width=20% height=20%>
+  <img src="https://github.com/tapkichvuong/dict/blob/main/demo/user.jpg" width=20% height=20%>
+  <img src="https://github.com/tapkichvuong/dict/blob/main/demo/bookmark.jpg" width=20% height=20%>
+</div>
 
-![bookmark](https://github.com/tapkichvuong/dict/blob/main/demo/bookmark.jpg)
-
-![login](https://github.com/tapkichvuong/dict/blob/main/demo/login.jpg)
-
-![user](https://github.com/tapkichvuong/dict/blob/main/demo/user.jpg)
-
-![search bar](https://github.com/tapkichvuong/dict/blob/main/demo/search%20bar.jpg)
-
-![definition](https://github.com/tapkichvuong/dict/blob/main/demo/definition.jpg)
-
-![not found](https://github.com/tapkichvuong/dict/blob/main/demo/not%20found.jpg)
+<div style="display:flex;justify-content:center;">
+  <img src="https://github.com/tapkichvuong/dict/blob/main/demo/search%20bar.jpg" width=20% height=20%>
+  <img src="https://github.com/tapkichvuong/dict/blob/main/demo/definition.jpg" width=20% height=20%>
+  <img src="https://github.com/tapkichvuong/dict/blob/main/demo/not%20found.jpg" width=20% height=20%>
+</div>
